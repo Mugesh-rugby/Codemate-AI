@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { Bot, User } from "lucide-react";
 import CodeBlock from "./CodeBlock.jsx";
 import AccuracyCard from "./AccuracyCard.jsx";
+import TestCaseCard from "./TestCaseCard.jsx";
 import ReferenceList from "./ReferenceList.jsx";
 
 export default function Message({ role, content }) {
@@ -62,6 +63,13 @@ export default function Message({ role, content }) {
               <>
                 <div className="section-label">AI Confidence</div>
                 <AccuracyCard accuracy={content.accuracy} reason={content.accuracyReason} />
+              </>
+            )}
+
+            {content.testCases && (content.testCases.passed > 0 || content.testCases.failed > 0) && (
+              <>
+                <div className="section-label">Test Cases</div>
+                <TestCaseCard passed={content.testCases.passed} failed={content.testCases.failed} />
               </>
             )}
 
