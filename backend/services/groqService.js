@@ -67,7 +67,7 @@ If no reliable reference applies, return an empty references array.`;
  * Sends the user's question to Groq and returns a validated, structured answer.
  */
 export async function askCodeMate(question, history = []) {
-  const MODEL = process.env.GROQ_MODEL || "groq/compound";
+  const MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
   const messages = [
     { role: "system", content: SYSTEM_PROMPT },
     ...history.slice(-8).map((m) => ({
